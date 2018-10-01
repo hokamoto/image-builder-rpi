@@ -151,7 +151,7 @@ fi
 printf "# Spawn a getty on Raspberry Pi serial line\nT0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100\n" >> /etc/inittab
 
 # boot/cmdline.txt
-echo "dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 cgroup_enable=cpuset cgroup_enable=memory swapaccount=1 elevator=deadline fsck.repair=yes rootwait quiet init=/usr/lib/raspi-config/init_resize.sh" > /boot/cmdline.txt
+echo "dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=/dev/sda2 rootfstype=ext4 cgroup_enable=cpuset cgroup_enable=memory swapaccount=1 elevator=deadline fsck.repair=yes rootwait quiet init=/usr/lib/raspi-config/init_resize.sh" > /boot/cmdline.txt
 
 # create a default boot/config.txt file (details see http://elinux.org/RPiconfig)
 echo "
@@ -172,8 +172,8 @@ echo "snd_bcm2835
 # create /etc/fstab
 echo "
 proc /proc proc defaults 0 0
-/dev/mmcblk0p1 /boot vfat defaults 0 0
-/dev/mmcblk0p2 / ext4 defaults,noatime 0 1
+/dev/sda1 /boot vfat defaults 0 0
+/dev/sda2 / ext4 defaults,noatime 0 1
 " > /etc/fstab
 
 # as the Pi does not have a hardware clock we need a fake one
