@@ -1,3 +1,6 @@
+.idea/*
+*.iml
+*.log
 *.img.zip.sha256
 *.img
 *.img.zip
