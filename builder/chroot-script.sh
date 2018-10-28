@@ -165,6 +165,10 @@ disable_camera_led=1
 gpu_mem=16
 " >> boot/config.txt
 
+echo "# Looks for a card once after booting, see https://github.com/raspberrypi/firmware/tree/master/boot/overlays
+dtoverlay=sdtweak,poll_once=on
+" >> boot/config.txt
+
 # /etc/modules
 echo "snd_bcm2835
 " >> /etc/modules
